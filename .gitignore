@@ -20,3 +20,7 @@ kaggle.json
 
 #.env
 .env
+
+#files
+etl_backup_20250407.csv
+data/
