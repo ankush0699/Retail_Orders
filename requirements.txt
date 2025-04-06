@@ -1,0 +1,5 @@
+pandas
+kaggle
+sqlalchemy
+mysql-connector-python
+python-dotenv

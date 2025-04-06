@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+venv/
+retail_orders/
+
+# Logs & backups
+*.log
+etl_backup_*.csv
+
+# Kaggle API
+.kaggle/
+kaggle.json
+
+#Testing .ipynb files
+*.ipynb
