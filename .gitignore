@@ -17,3 +17,6 @@ kaggle.json
 
 #Testing .ipynb files
 *.ipynb
+
+#.env
+.env
