@@ -1,4 +1,4 @@
--- Q6: Which sub_cateegory had highest growth by profit in 2023 compare to 2022?
+-- Q5: Which sub_cateegory had highest growth by profit in 2023 compare to 2022?
 
 WITH Yearly_Profit AS (SELECT YEAR(order_date) AS order_year, sub_category, SUM(profit) AS profit
 						FROM df_orders
