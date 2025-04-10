@@ -1,4 +1,6 @@
-# Section 1: Creation of ETL Pipeline for reail_orders daataset.
+# Retail Orders Documentation
+
+## Section 1: Creation of ETL Pipeline for `retail_orders` Dataset
 
 # Retail Orders ETL Script
 
@@ -77,7 +79,7 @@ The script performs the following steps:
 - Table: `df_orders`
 - Columns: cleaned and transformed retail order data
 
-## Section 2: SQL Queries Executed on `df_orders`
+## SQL Queries Executed on `df_orders`
 
 The following SQL queries were used to analyze and extract insights from the `df_orders` table:
 
@@ -103,6 +105,35 @@ These queries provided key insights into seasonal trends, regional performance, 
 
 - Repeated script execution will append data to the existing table. Modify the `if_exists` parameter in `to_sql()` if needed.
 - Make sure the dataset and column names match the script's expectations if using a different source.
+
+## Documentation
+
+This document serves as the complete technical documentation for the Retail Orders ETL project. It includes:
+
+1. **ETL Process Design**
+   - Data extraction from Kaggle using CLI and API authentication.
+   - Data transformation using pandas: column normalization, missing value handling, new feature creation.
+   - Data loading into MySQL using SQLAlchemy.
+
+2. **System Requirements and Setup Instructions**
+   - Python version, libraries, and environment setup.
+   - MySQL server configuration.
+   - Kaggle API setup for secure dataset access.
+
+3. **Execution Guide**
+   - How to run the script, expected outputs, and logics behind data modifications.
+
+4. **SQL Query Catalog**
+   - A list of business-relevant SQL queries used to derive insights from the data, with notes on what each query achieves.
+
+5. **Best Practices**
+   - Use of parameterized DB connections.
+   - Handling repeated execution behavior (e.g., `if_exists='append'` in `to_sql`).
+
+6. **Next Steps** (Optional Enhancements)
+   - Integration with a dashboard (e.g., Power BI, Streamlit).
+   - Automating the ETL using Airflow or cron jobs.
+   - Logging and exception handling for production-readiness.
 
 ## License
 
