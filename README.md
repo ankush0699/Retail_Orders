@@ -1,5 +1,37 @@
 # Retail Orders Documentation
 
+This document serves as the complete technical documentation for the Retail Orders ETL project. It includes:
+
+1. **ETL Process Design**
+   - Data extraction from Kaggle using CLI and API authentication.
+   - Data transformation using pandas: column normalization, missing value handling, new feature creation.
+   - Data loading into MySQL using SQLAlchemy.
+
+2. **System Requirements and Setup Instructions**
+   - Python version, libraries, and environment setup.
+   - MySQL server configuration.
+   - Kaggle API setup for secure dataset access.
+
+3. **Execution Guide**
+   - How to run the script, expected outputs, and logics behind data modifications.
+
+4. **SQL Query Catalog**
+   - A list of business-relevant SQL queries used to derive insights from the data, with notes on what each query achieves.
+
+5. **Best Practices**
+   - Use of parameterized DB connections.
+   - Handling repeated execution behavior (e.g., `if_exists='append'` in `to_sql`).
+
+6. **Next Steps** (Optional Enhancements)
+   - Integration with a dashboard (e.g., Power BI, Streamlit).
+   - Automating the ETL using Airflow or cron jobs.
+   - Logging and exception handling for production-readiness.
+
+## License
+
+This project is for educational and development purposes only.
+
+
 ## Section 1: Creation of ETL Pipeline for `retail_orders` Dataset
 
 # Retail Orders ETL Script
@@ -12,6 +44,20 @@ This Python script performs a complete ETL (Extract, Transform, Load) process us
 - Cleans and transforms the data using pandas.
 - Calculates financial metrics such as discount, sale price, and profit.
 - Loads the processed data into a MySQL database.
+- Performs data analysis using SQL queries on the loaded dataset.
+
+## Project Flow Diagram
+
+Below is the architecture diagram of the ETL pipeline:
+
+![Project Flow](project_flow.png)
+
+### Description:
+- **Kaggle API**: Used to download the dataset programmatically.
+- **Python Script**: Handles dataset download, cleaning, transformation, and metric calculation.
+- **Pandas**: Used for in-memory data cleaning and processing.
+- **SQL Server**: Stores the cleaned dataset for analysis.
+- **SQL Queries**: Used to derive analytical insights and perform business intelligence tasks.
 
 ## Requirements
 
@@ -106,36 +152,5 @@ These queries provided key insights into seasonal trends, regional performance, 
 - Repeated script execution will append data to the existing table. Modify the `if_exists` parameter in `to_sql()` if needed.
 - Make sure the dataset and column names match the script's expectations if using a different source.
 
-## Documentation
 
-This document serves as the complete technical documentation for the Retail Orders ETL project. It includes:
-
-1. **ETL Process Design**
-   - Data extraction from Kaggle using CLI and API authentication.
-   - Data transformation using pandas: column normalization, missing value handling, new feature creation.
-   - Data loading into MySQL using SQLAlchemy.
-
-2. **System Requirements and Setup Instructions**
-   - Python version, libraries, and environment setup.
-   - MySQL server configuration.
-   - Kaggle API setup for secure dataset access.
-
-3. **Execution Guide**
-   - How to run the script, expected outputs, and logics behind data modifications.
-
-4. **SQL Query Catalog**
-   - A list of business-relevant SQL queries used to derive insights from the data, with notes on what each query achieves.
-
-5. **Best Practices**
-   - Use of parameterized DB connections.
-   - Handling repeated execution behavior (e.g., `if_exists='append'` in `to_sql`).
-
-6. **Next Steps** (Optional Enhancements)
-   - Integration with a dashboard (e.g., Power BI, Streamlit).
-   - Automating the ETL using Airflow or cron jobs.
-   - Logging and exception handling for production-readiness.
-
-## License
-
-This project is for educational and development purposes only.
 
