@@ -50,7 +50,7 @@ This Python script performs a complete ETL (Extract, Transform, Load) process us
 
 Below is the architecture diagram of the ETL pipeline:
 
-![Project Flow](project_flow.png)
+![Project Flow](assets/project_flow.png)
 
 ### Description:
 - **Kaggle API**: Used to download the dataset programmatically.
