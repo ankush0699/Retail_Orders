@@ -4,5 +4,4 @@ mysql-connector-python
 SQLAlchemy
 chardet
 kaggle
-python-dotenv
-
+python-dotenv==1.0.1
