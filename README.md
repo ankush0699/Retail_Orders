@@ -207,7 +207,7 @@ The highest-growing subcategories signal emerging customer interests. If support
 
 Identifying peak profitability months helps in planning promotions, managing stock, and preparing logistics well in advance. It also supports budgeting and forecasting efforts.
 
-Recommendations
+## Recommendations
 
 1. Optimize Product Strategy
 
