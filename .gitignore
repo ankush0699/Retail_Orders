@@ -22,6 +22,6 @@ __pycache__/
 *.sql
 
 # Ignore testing ETL pipeline.
-ETL_Pipeline/
+ETL_Pipeline
 
 
