@@ -22,11 +22,6 @@ This document serves as the complete technical documentation for the Retail Orde
    - Use of parameterized DB connections.
    - Handling repeated execution behavior (e.g., `if_exists='append'` in `to_sql`).
 
-6. **Next Steps** (Optional Enhancements)
-   - Integration with a dashboard (e.g., Power BI, Streamlit).
-   - Automating the ETL using Airflow or cron jobs.
-   - Logging and exception handling for production-readiness.
-
 ## License
 
 This project is for educational and development purposes only.
@@ -68,11 +63,12 @@ Below is the architecture diagram of the ETL pipeline:
   - sqlalchemy
   - mysql-connector-python
   - kaggle
+  - python-dotenv==1.0.1
 
 You can install the required packages using:
 
 ```bash
-pip install pandas sqlalchemy mysql-connector-python kaggle
+pip install -r requirements.txt
 ```
 
 ## Kaggle API Setup
@@ -101,6 +97,36 @@ port=3306
 ```
 
 The script creates a database named `retail_orders` if it does not already exist and inserts data into a table named `df_orders`.
+
+## How to Use This Pipeline
+
+Follow these steps to execute the ETL pipeline:
+
+1. **Set up the virtual environment:**
+   ```bash
+   python -m venv venv
+   source venv/Scripts/activate  # For Windows Git Bash
+   pip install -r requirements.txt
+   ```
+
+2. **Configure environment variables:**
+   Create a `.env` file in the root directory with your MySQL credentials and target table:
+   ```env
+   MYSQL_USER=root
+   MYSQL_PASSWORD=password
+   MYSQL_HOST=localhost
+   MYSQL_DB=retail_orders
+   MYSQL_TABLE=df_orders
+   ```
+
+3. **Run the pipeline:**
+   ```bash
+   python main.py
+   ```
+   This downloads the dataset, cleans it, and loads it into your MySQL database.
+
+4. **Verify the results:**
+   Check your MySQL server for the `retail_orders` database and confirm that the `df_orders` table is populated.
 
 ## Running the Script
 
@@ -134,7 +160,7 @@ The following SQL queries were used to analyze and extract insights from the `df
 
 ### 1. Month-over-Month (MoM) Sales Comparison for FY 2022 vs FY 2023
 - Compared monthly sales revenue for each month between FY 2022 and FY 2023.
-- Included YoY percentage change and trend indicators (↑, ↓, →).
+- Included YoY percentage change and trend indicators.
 
 ### 2. Top 5 Products per Region by Revenue
 - Used `ROW_NUMBER()` with `PARTITION BY region` to rank products based on total revenue.
@@ -152,9 +178,6 @@ These queries provided key insights into seasonal trends, regional performance, 
 - Repeated script execution will append data to the existing table. Modify the `if_exists` parameter in `to_sql()` if needed.
 - Make sure the dataset and column names match the script's expectations if using a different source.
 
-
-
-
 # Business Insights and Recommendations
 
 ## Business Insights
@@ -165,7 +188,7 @@ Total Revenue: $11,079,328
 
 Total Profit: $1,039,928
 
-Profit Margin: Approximately 9.4%This suggests a modest margin, indicating room for optimization either through pricing strategies, cost control, or improving sales of higher-margin products.
+Profit Margin: Approximately 9.4%. This suggests a modest margin, indicating room for optimization either through pricing strategies, cost control, or improving sales of higher-margin products.
 
 2. Regional Revenue Contribution
 
@@ -173,7 +196,7 @@ West: $3.47M
 
 East: $3.26M
 
-Central: $2.39MThe West region leads in revenue generation. Region-wise performance implies that strategic investments in high-performing regions could yield better returns, while the underperformance of certain regions (e.g., South) may need root-cause analysis.
+Central: $2.39M. The West region leads in revenue generation. Region-wise performance implies that strategic investments in high-performing regions could yield better returns, while the underperformance of certain regions (e.g., South) may need root-cause analysis.
 
 3. Revenue by Product Category
 
@@ -181,7 +204,7 @@ Technology: $3.93M
 
 Furniture: $3.72M
 
-Office Supplies: $3.42MTechnology contributes the highest revenue, likely due to higher unit prices. A focused strategy on this category can further strengthen overall financial performance.
+Office Supplies: $3.42M. Technology contributes the highest revenue, likely due to higher unit prices. A focused strategy on this category can further strengthen overall financial performance.
 
 4. Top Revenue-Generating Subcategories
 
@@ -189,11 +212,11 @@ Chairs: $1.60M
 
 Phones: $1.57M
 
-Tables: $1.10MThese subcategories are key drivers of revenue. Identifying what makes them successful (e.g., price, demand, promotions) could provide a blueprint for other subcategories.
+Tables: $1.10M. These subcategories are key drivers of revenue. Identifying what makes them successful (e.g., price, demand, promotions) could provide a blueprint for other subcategories.
 
 5. Month-over-Month Sales Trends (FY 2022–2023)
 
-Month-wise comparisons indicate seasonal trends. For instance, some months may consistently outperform others, reflecting periodic surges in consumer demand. These insights can be used for forecasting and marketing alignment.
+Month-wise comparisons indicate seasonal trends. Some months consistently outperform others, reflecting periodic surges in consumer demand. These insights can be used for forecasting and marketing alignment.
 
 6. Region-wise Product Preferences
 
@@ -212,32 +235,24 @@ Identifying peak profitability months helps in planning promotions, managing sto
 1. Optimize Product Strategy
 
 Prioritize inventory and marketing for subcategories like Chairs, Phones, and Tables.
-
 Focus on products with both high revenue and high margins to improve overall profitability.
 
 2. Regional Strategy Enhancement
 
 Implement region-specific promotions and stock strategies based on top-performing products in each area.
-
 Investigate and address underperformance in regions like the South to identify operational or market-fit issues.
 
 3. Leverage Seasonality
 
 Use insights from month-over-month trends and profitable months to schedule campaigns and adjust pricing strategies.
-
 Align procurement and logistics to ensure availability during peak demand periods.
 
 4. Invest in High-Growth Subcategories
 
 Monitor emerging subcategories showing high YoY growth.
-
 Pilot targeted campaigns or bundle offers to further test and scale growth in these areas.
 
 5. Rationalize Low-Performing Segments
 
 Identify underperforming products with low revenue or negative margins.
-
 Re-evaluate these SKUs for repositioning, discounting, or possible discontinuation.
-
-
-
