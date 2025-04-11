@@ -1,3 +1,24 @@
-# vitual env
-retail_orders
+# Ignore virtual environment
+retail_orders/
+
+# Ignore Python cache and logs
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# Ignore environment configs
+.env
+.env.*
+
+# Ignore downloaded datasets and extracted CSVs
+*.zip
+*.csv
+
+# Ignore VSCode settings (optional)
+.vscode/
+
+# Ignore MySQL dump or local exports
+*.sql
+
 
