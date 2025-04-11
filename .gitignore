@@ -1,5 +1,5 @@
 # Ignore virtual environment
-retail_orders/
+venv
 
 # Ignore Python cache and logs
 __pycache__/
@@ -20,5 +20,8 @@ __pycache__/
 
 # Ignore MySQL dump or local exports
 *.sql
+
+# Ignore testing ETL pipeline.
+.ETL_Pipeline/
 
 
