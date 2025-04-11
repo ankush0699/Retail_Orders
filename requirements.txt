@@ -1,0 +1,6 @@
+# requirements.txt
+pandas
+mysql-connector-python
+SQLAlchemy
+chardet
+kaggle
