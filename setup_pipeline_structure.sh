@@ -12,4 +12,4 @@ touch pipeline/load.py
 touch pipeline/config.py
 touch pipeline/config.py
 
-echo "✅ Empty pipeline folder and module files created."
+echo "Empty pipeline folder and module files created."
