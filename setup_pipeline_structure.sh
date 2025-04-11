@@ -10,6 +10,5 @@ touch pipeline/extract.py
 touch pipeline/transform.py
 touch pipeline/load.py
 touch pipeline/config.py
-touch pipeline/config.py
 
 echo "Empty pipeline folder and module files created."
